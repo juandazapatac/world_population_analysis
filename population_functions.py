@@ -3,6 +3,7 @@
 #Imports
 import csv
 from functools import reduce
+import pandas as pd
 
 # Functions
     
@@ -49,3 +50,8 @@ with open("./world_population.csv") as csvfile:
 
 # Here we create a dict per country, this will be useful later on
 countries_dicts=[dict(zip(header,country)) for country in countries]
+
+# Creating a pandas Series object from the before used data
+countries_series=pd.Series(countries_dicts,index=[d["Country/Territory"] for d in countries_dicts],name="Countries population data")
+
+        
